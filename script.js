@@ -1,11 +1,11 @@
 //function to get the answers from the json file
 async function getJSON() {
-    return fetch('answers.json')
-        .then((response)=>response.json())
-        .then((responseJson)=>{return responseJson});
+  return fetch('answers.json')
+    .then((response) => response.json())
+    .then((responseJson) => { return responseJson });
 }
 window.finished = 0;
-(async () => {window.answers = await getJSON(); window.finished = 1;})();
+(async () => { window.answers = await getJSON(); window.finished = 1; })();
 
 document.getElementById("status").innerHTML = "Fetching Valid Answers..."
 document.getElementById("status").innerHTML = ""
@@ -41,8 +41,9 @@ function FastFacts() {
   //making a list of all the input boxes
   var inputs = document.querySelectorAll('input[type="text"]');
 
-  
+
   //changing all of the input boxes to be empty and black
+
   inputs.forEach(function(input) {
     input.value = '';
     input.style.color = "black";
@@ -65,14 +66,14 @@ function FastFacts() {
 
 function Check() {
   // Get the input elements
-    for (var i = 0; i < 5; i++) {
-        for (var j = 0; j < 5; j++) {
-            inputs = document.querySelectorAll('input[type="text"]');
-            categorio = document.getElementById('category'+j.toString()).innerHTML;
-            num = 5*i+j;
-            inputs[num].style.color = answers[categorio].includes(lowerCase(inputs[num].value.trim())) ? "green" : "red";
-        }
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      inputs = document.querySelectorAll('input[type="text"]');
+      categorio = document.getElementById('category' + j.toString()).innerHTML;
+      num = 5 * i + j;
+      inputs[num].style.color = answers[categorio].includes(lowerCase(inputs[num].value.trim())) ? "green" : "red";
     }
+  }
 
 
 }
