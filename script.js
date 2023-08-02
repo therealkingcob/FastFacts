@@ -1,3 +1,4 @@
+const starttime = Date.now();
 //function to get the answers from the json file
 async function getJSON() {
   return fetch('answers.json')
@@ -5,9 +6,10 @@ async function getJSON() {
     .then((responseJson) => { return responseJson });
 }
 window.finished = 0;
-(async () => { window.answers = await getJSON(); window.finished = 1; })();
+(async () => { window.answers = await getJSON(); window.finished = 1; var timenow = Date.now(); console.log(timenow-starttime);})();
 
-document.getElementById("status").innerHTML = "Fetching Valid Answers..."
+document.getElementById("status").innerHTML = "Fetching Valid Answers...";
+console.log(finished);
 document.getElementById("status").innerHTML = ""
 //function to lower case a string
 
@@ -19,9 +21,11 @@ function lowerCase(str) {
 //list of letters
 const letters = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 //the categories
-const categories = ["elements", "human organs", "units", "measurement equipment", "scientific laws", "diseases", "dinosaurs", "bones", "weather phenomenon", "plants", "nobel prize winners", "astronomy terms", "bacteria types", "fossils", "insects", "mammals", "landforms", "programming languages", "minerals", "trees", "muscles", "meteorology", "vegetables", "compounds", "birds", "brain parts", "countries", "moons"];
 
 var answers = {};
+
+const categories = Object.keys(answers);
+
 var chosencategory = ""
 
 
