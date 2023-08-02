@@ -9,7 +9,7 @@ window.finished = 0;
 (async () => { window.answers = await getJSON(); window.finished = 1; var timenow = Date.now(); console.log(timenow-starttime);})();
 
 document.getElementById("status").innerHTML = "Fetching Valid Answers...";
-console.log(finished);
+console.log((Date.now()-starttime).toString()+" "+finished);
 document.getElementById("status").innerHTML = ""
 //function to lower case a string
 
